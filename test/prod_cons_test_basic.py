@@ -30,12 +30,12 @@ class TestProdConsTestBasic(unittest.TestCase):
 
     def test_no_put_element_get_size(self):
         prod_cons = prod_cons_imprt.GenProdCons()
-        self.assertEqual(len(prod_cons.q), 0)
+        self.assertEqual(len(prod_cons), 0)
 
     def test_put_one_element_get_size(self):
         prod_cons = prod_cons_imprt.GenProdCons()
         prod_cons.put([1,2,3])
-        self.assertEqual(len(prod_cons.q), 1)
+        self.assertEqual(len(prod_cons), 1)
         
     def test_put_one_element_get_it(self):
         prod_cons = prod_cons_imprt.GenProdCons()
@@ -50,10 +50,10 @@ class TestProdConsTestBasic(unittest.TestCase):
 
         for e in elements:
             prod_cons.put(e)
-        self.assertEqual(len(prod_cons.q), len(elements))
+        self.assertEqual(len(prod_cons), len(elements))
 
-        for i in range(0,len(prod_cons.q)):
+        for i in range(0,len(prod_cons)):
             e = prod_cons.get()
 
-        self.assertEqual(len(prod_cons.q), 0)
+        self.assertEqual(len(prod_cons), 0)
 

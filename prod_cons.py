@@ -1,25 +1,27 @@
-from collections import deque
+from queue import Queue
 
 class GenProdCons:
     def __init__(self, size=10):
-        self.q = deque(maxlen=size)
+        self.q = Queue(maxsize=size)
         self.size = size
 
     def put(self, E):
-        self.q.append(E)  
+        self.q.put(E)  
 
     def get(self):
-        while True:
-            if not len(self.q) ==  0:
-                return self.q.popleft() 
-            break
+        return self.q.get() 
+
 
 
     def is_full(self):
-        return len(self.q) == self.size
+        return self.q.qsize() == self.size
     
     def is_empty(self):
-        return len(self.q) ==  0
+        return self.q.empty()
     
     def size(self):
         return self.size
+    
+
+    def __len__(self):
+        return self.q.qsize()
