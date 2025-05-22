@@ -17,10 +17,11 @@ else:
 
 rendezvous_imprt = importlib.__import__(rendezvous_mdl, globals(), locals(), [], 0)
 
-def thread(rdvs, q, val):
+def thread(rdvs,q, val):
     q.put(rdvs.echanger(val))
 
 class TestProdConsTestSync(unittest.TestCase):
+
 
     @parameterized.expand([1,2,3,4,5,6,7,8,9,10])
     def test_set_pair_threads(self, times):
@@ -50,6 +51,8 @@ class TestProdConsTestSync(unittest.TestCase):
             self.assertNotEqual(thr_val_1, thread_info[i * 2]['val'])
             self.assertNotEqual(thr_val_2, thread_info[i * 2 + 1]['val'])
 
+ 
+ 
     @parameterized.expand([1,2,3,4,5,6,7,8,9,10])
     def test_set_pair_swap_values(self, times):
         
